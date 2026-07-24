@@ -58,14 +58,20 @@ def _pubmed_count(term: str) -> int:
 
 
 def pubmed_prior_ma(topic: str) -> int:
-    """Count existing meta-analyses / systematic reviews on the topic."""
-    q = f'"{topic}" AND (meta-analysis[pt] OR systematic review[sb])'
+    """Count existing meta-analyses / systematic reviews on the topic.
+
+    The topic is passed through verbatim (no forced quoting): multi-word
+    topics are ANDed by PubMed by default, which is the correct pre-flight
+    behaviour. If you want an exact phrase, wrap it in quotes yourself,
+    e.g.  python srma_gap.py '"deep brain stimulation"'.
+    """
+    q = f"{topic} AND (meta-analysis[pt] OR systematic review[sb])"
     return _pubmed_count(q)
 
 
 def pubmed_pool(topic: str, pool_pt: str) -> int:
     """Count the primary-study pool (e.g. RCTs) available for the topic."""
-    q = f'"{topic}" AND {pool_pt}'
+    q = f"{topic} AND {pool_pt}"
     return _pubmed_count(q)
 
 

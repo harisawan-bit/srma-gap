@@ -30,8 +30,11 @@ python3 srma_gap.py "your topic"
 ## Usage
 
 ```bash
-# Basic gap scan
+# Basic gap scan (multi-word topics are ANDed automatically)
 python3 srma_gap.py "deep brain stimulation"
+
+# Force an exact phrase by wrapping in quotes
+python3 srma_gap.py '"deep brain stimulation"'
 
 # Customize how the primary-study pool is sized
 python3 srma_gap.py "your topic" --pool-pt "randomized controlled trial[pt]"
