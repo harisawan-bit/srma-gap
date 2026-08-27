@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "srma-gap"
+version = "1.0.0"
+description = "Check whether a systematic-review / meta-analysis topic is a real evidence gap (PubMed + PROSPERO, stdlib-only)."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+    { name = "harisawan-bit" },
+]
+keywords = [
+    "systematic-review",
+    "meta-analysis",
+    "evidence-gap",
+    "pubmed",
+    "prospero",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Utilities",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/harisawan-bit/srma-gap"
+Repository = "https://github.com/harisawan-bit/srma-gap"
+Issues = "https://github.com/harisawan-bit/srma-gap/issues"
+
+[project.scripts]
+srma-gap = "srma_gap:main"
+
+[tool.setuptools]
+py-modules = ["srma_gap"]
