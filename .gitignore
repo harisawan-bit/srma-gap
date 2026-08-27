@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Output / working files
+output/
+
+# Editors / OS cruft
+.DS_Store
+.idea/
+.vscode/
+*.egg-info/
+.eggs/
+build/
+dist/

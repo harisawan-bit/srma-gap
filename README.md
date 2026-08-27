@@ -1,5 +1,9 @@
 # srma-gap
 
+![CI](https://github.com/harisawan-bit/srma-gap/actions/workflows/ci.yml/badge.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)
+
 **Is this systematic-review / meta-analysis topic worth locking in?**
 
 Before committing months to a review, `srma-gap` runs the three evidence-gap
@@ -19,7 +23,21 @@ probably already filled.
 
 ## Install
 
-No install. It's a single Python 3 script using only the standard library.
+**Pip-installable (recommended):**
+
+```bash
+pip install -e .      # from a clone, for development
+pip install srma-gap  # from PyPI (once published)
+```
+
+This installs the `srma-gap` console script, so you can run it from anywhere:
+
+```bash
+srma-gap "your topic"
+```
+
+**No install (still supported):** it's a single Python 3 script using only the
+standard library.
 
 ```bash
 python3 srma_gap.py "your topic"
