@@ -56,7 +56,36 @@ python3 srma_gap.py '"deep brain stimulation"'
 
 # Customize how the primary-study pool is sized
 python3 srma_gap.py "your topic" --pool-pt "randomized controlled trial[pt]"
+
+# Machine-readable JSON output (pipeable into jq, scripts, dashboards)
+python3 srma_gap.py "your topic" --json
+
+# NCBI API key: raises the PubMed rate limit from 3 to 10 requests/second.
+# The key is never printed or logged.
+python3 srma_gap.py "your topic" --ncbi-api-key YOUR_KEY
+
+# Per-request HTTP timeout (seconds)
+python3 srma_gap.py "your topic" --timeout 15
 ```
+
+Example JSON output (`--json`):
+
+```
+{
+  "topic": "your topic",
+  "pool_pt": "randomized controlled trial[pt]",
+  "prior_ma": 42,
+  "registrations": 7,
+  "pool": 42,
+  "verdict": "REAL GAP - sizeable study pool, few existing MAs. Strong candidate to lock in.",
+  "errors": []
+}
+```
+
+If a source fails, its count is `-1`, `verdict` is `null`, `errors` lists the
+failure messages, and the exit code is `1`. All HTTP calls retry transient
+failures (timeouts, connection resets, HTTP 429/5xx) up to 3 times with
+exponential backoff, honouring `Retry-After` on 429.
 
 Example output:
 
@@ -84,6 +113,7 @@ strategy is even written.
 
 - **PubMed** (NCBI E-utilities) — public, no key. Counts are exact query hits;
   they reflect your formulation, so phrase the topic like a real search string.
+  An optional `--ncbi-api-key` raises the rate limit from 3 to 10 req/s.
 - **PROSPERO** (University of York CRD) — the international prospective register
   of systematic reviews. The search endpoint is undocumented; this tool uses the
   same POST contract the PROSPERO web app uses (including its epoch-ms auth

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "srma-gap"
-version = "1.0.0"
+version = "1.1.0"
 description = "Check whether a systematic-review / meta-analysis topic is a real evidence gap (PubMed + PROSPERO, stdlib-only)."
 readme = "README.md"
 requires-python = ">=3.8"
